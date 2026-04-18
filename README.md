@@ -1,5 +1,7 @@
 # Parameterized-Dipole-Inversion-for-Stable-Quantitative-Susceptibility-Mapping
 
+
+
 A PyTorch implementation of a 3-D UNet that learns to invert the dipole convolution for QSM reconstruction. The network predicts the complex dipole inverse directly from the k-space dipole kernel, enabling fast susceptibility map estimation from a local field map (phase).
 
 ---
@@ -95,6 +97,30 @@ python main.py test \
 | `--vis_dir` | both | `.` | Output folder for PNGs |
 | `--plot_loss` | train | flag | Save loss curve PNG |
 | `--plot_metrics` | test | flag | Save metrics bar chart |
+
+---
+
+## Model Architecture
+
+![Architecture of the proposed 3D U-Net](architecture.png)
+
+**Figure 1.** Architecture of the proposed 3D U-Net for dipole inverse prediction. The encoder and decoder each comprise three blocks of Conv3D (3×3×3) + BatchNorm + ReLU ×2, with feature dimensions 16, 32, 64, and bottleneck 128. Skip connections concatenate encoder feature maps at matching decoder resolutions. A final 1×1×1 convolutional layer produces the two-channel complex dipole inverse D̂⁻¹(k).
+
+The network takes the 2-channel real/imaginary representation of the dipole kernel as input (shape `2, Z, Y, X`) and outputs the predicted dipole inverse in the same format. The reconstruction then proceeds as:
+
+```
+χ = IFFT( D̂⁻¹ · FFT(φ) )
+```
+
+where φ is the local field map (phase).
+
+---
+
+## Qualitative Results
+
+![Chi comparison on SNU test set](snu_test.png)
+
+**Figure 2.** Quantitative performance metrics (SSIM, PSNR, HFEN, and NRMSE) for QSM reconstruction methods evaluated on the SNU dataset. Models were trained using a single-patient training strategy, where separate models were trained on individual patients (1–5). During inference, predictions from these models were combined using averaging and evaluated on test patients. The reported results represent the mean ± standard deviation across all test cases. Best-performing values for each metric are highlighted in bold.
 
 ---
 
