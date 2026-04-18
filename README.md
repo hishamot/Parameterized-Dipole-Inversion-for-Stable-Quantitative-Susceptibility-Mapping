@@ -161,6 +161,102 @@ main.py
 
 ---
 
-## Citation / acknowledgements
+## Citation / Acknowledgements
 
-If you use this code, please cite the relevant QSM literature and acknowledge the original COSMOS reference data used for supervision.
+If you use this code, please cite the following works.
+
+---
+
+### DeepQSM
+
+The approach of learning to invert the dipole kernel directly with a neural network was pioneered by DeepQSM:
+
+```bibtex
+@article{bollmann2019deepqsm,
+  title   = {{DeepQSM} -- using deep learning to solve the dipole inversion
+             for quantitative susceptibility mapping},
+  author  = {Bollmann, Steffen and Rasmussen, Kasper Gade B{\o}tker and
+             Kristensen, Mads and Blendal, Rasmus Gundorff and
+             {\O}stergaard, Lasse Riis and Plocharski, Maciej and
+             O'Brien, Kieran and Langkammer, Christian and
+             Janke, Andrew and Barth, Markus},
+  journal = {NeuroImage},
+  volume  = {195},
+  pages   = {373--383},
+  year    = {2019},
+  doi     = {10.1016/j.neuroimage.2019.03.060}
+}
+```
+
+---
+
+### LP-CNN (LPCNN)
+
+The Learned Proximal Convolutional Neural Network, which introduced unrolled proximal-gradient learning for QSM and is used as a baseline comparison:
+
+```bibtex
+@inproceedings{lai2020lpcnn,
+  title     = {Learned Proximal Networks for Quantitative Susceptibility Mapping},
+  author    = {Lai, Kuo-Wei and Aggarwal, Manu and van Zijl, Peter and
+               Li, Xu and Sulam, Jeremias},
+  booktitle = {Medical Image Computing and Computer Assisted Intervention
+               (MICCAI)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {12262},
+  pages     = {125--135},
+  publisher = {Springer},
+  year      = {2020},
+  doi       = {10.1007/978-3-030-59713-9_13}
+}
+```
+
+---
+
+### QSMnet
+
+The first deep-learning QSM method based on a 3D U-Net trained on COSMOS ground truth, introduced from the SNU Laboratory for Imaging Science and Technology (SNU-LIST):
+
+```bibtex
+@article{yoon2018qsmnet,
+  title   = {Quantitative susceptibility mapping using deep neural network: {QSMnet}},
+  author  = {Yoon, Jaeyeon and Gong, Enhao and Chatnuntawech, Itthi and
+             Bilgi{\c{c}}, Berkin and Lee, Jingu and Jung, Woojin and
+             Ko, Jingyu and Jung, Hosan and Setsompop, Kawin and
+             Zaharchuk, Greg and Kim, Eung Yeop and Pauly, John and
+             Lee, Jongho},
+  journal = {NeuroImage},
+  volume  = {179},
+  pages   = {199--206},
+  year    = {2018},
+  doi     = {10.1016/j.neuroimage.2018.06.030}
+}
+```
+
+The extended version, QSMnet+, which introduced data augmentation to improve susceptibility linearity across a wider range:
+
+```bibtex
+@article{jung2020qsmnetplus,
+  title   = {Exploring linearity of deep neural network trained {QSM}: {QSMnet+}},
+  author  = {Jung, Woojin and Yoon, Jaeyeon and Ji, Sooyeon and
+             Choi, Joon Yul and Kim, Jae Myung and Nam, Yoonho and
+             Kim, Eung Yeop and Lee, Jongho},
+  journal = {NeuroImage},
+  volume  = {211},
+  pages   = {116619},
+  year    = {2020},
+  doi     = {10.1016/j.neuroimage.2020.116619}
+}
+```
+
+---
+
+### SNU Dataset
+
+The in-vivo dataset used for training and evaluation in this work was acquired at Seoul National University and is the same multi-orientation GRE dataset introduced alongside QSMnet. If you use this data, please cite both QSMnet papers above and acknowledge the SNU Laboratory for Imaging Science and Technology (SNU-LIST):
+
+> Dataset: SNU-LIST QSM dataset, Laboratory for Imaging Science and Technology,
+> Department of Electrical and Computer Engineering, Seoul National University.
+> Available at: https://github.com/SNU-LIST/QSMnet
+
+---
+
